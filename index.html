@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio website for a budding data scientist and AI engineer."
+    />
+    <title>Data Science & AI Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="texture" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#top">
+        <span class="brand-mark">DS/AI</span>
+        <span id="brandName">Your Name</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-reveal">
+        <p class="eyebrow">Open to Data Science & AI Roles</p>
+        <h1 id="heroName">Your Name</h1>
+        <p class="tagline" id="heroTagline">
+          Budding Data Scientist & AI Engineer building practical, high-impact
+          machine learning solutions.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="githubButton" href="#" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-ghost" id="resumeButton" href="#" target="_blank" rel="noreferrer">Resume</a>
+        </div>
+      </section>
+
+      <section class="about section-reveal">
+        <div>
+          <h2>About</h2>
+          <p id="aboutText">
+            I focus on end-to-end AI products: data wrangling, model training,
+            evaluation, deployment, and clear business impact.
+          </p>
+        </div>
+        <ul class="quick-facts">
+          <li>
+            <span class="fact-label">Location</span>
+            <span class="fact-value" id="locationText">United States</span>
+          </li>
+          <li>
+            <span class="fact-label">Specialties</span>
+            <span class="fact-value">ML, NLP, Analytics, MLOps</span>
+          </li>
+          <li>
+            <span class="fact-label">Status</span>
+            <span class="fact-value">Seeking full-time opportunities</span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="work" class="section-reveal">
+        <div class="section-head">
+          <h2>Featured Work</h2>
+          <a id="repoProfileLink" href="#" target="_blank" rel="noreferrer">View all repositories</a>
+        </div>
+        <div id="repoGrid" class="repo-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="experience" class="section-reveal">
+        <h2>Experience Snapshot</h2>
+        <div id="experienceList" class="experience-list"></div>
+      </section>
+
+      <section class="section-reveal">
+        <h2>Toolbox</h2>
+        <ul id="skillsList" class="skills-list"></ul>
+      </section>
+
+      <section id="contact" class="contact section-reveal">
+        <h2>Let’s build something useful.</h2>
+        <p>Reach out for internships, graduate roles, or entry-level DS/AI opportunities.</p>
+        <div class="contact-actions">
+          <a id="emailLink" class="btn btn-primary" href="#">Email me</a>
+          <a id="linkedinLink" class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> <span id="footerName">Your Name</span>. Built with HTML, CSS, and JavaScript.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
