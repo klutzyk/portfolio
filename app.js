@@ -1,13 +1,13 @@
 const portfolio = {
-  name: "Your Name",
+  name: "Kulunu Abeysinghe",
   role: "Budding Data Scientist & AI Engineer",
   location: "United States",
   about:
     "I focus on practical data science and AI systems that turn messy data into reliable decisions, from experimentation to deployment.",
-  githubUsername: "your-github-username",
-  linkedinUrl: "https://www.linkedin.com/in/your-linkedin-handle",
-  email: "you@example.com",
-  resumeUrl: "https://example.com/resume.pdf",
+  githubUsername: "kalz9",
+  linkedinUrl: "",
+  email: "kabe0009@student.monash.edu",
+  resumeUrl: "",
   skills: [
     "Python",
     "SQL",
