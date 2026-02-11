@@ -241,6 +241,16 @@ h2 {
   text-underline-offset: 0.24rem;
 }
 
+.repo-status {
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.repo-status[data-tone="error"] {
+  color: #8d3323;
+}
+
 .repo-grid {
   display: grid;
   gap: 0.8rem;

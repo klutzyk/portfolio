@@ -51,42 +51,30 @@ const portfolio = {
         "Experienced with version-controlled teamwork, structured experimentation, and communicating technical findings clearly for both technical and non-technical audiences."
     }
   ],
-  fallbackProjects: [
-    {
-      name: "Customer-Churn-Classifier",
-      description:
-        "End-to-end churn prediction workflow with feature engineering, model comparison, and explainability.",
-      url: "https://github.com/klutzyk/customer-churn-classifier",
-      language: "Python",
-      stars: 0,
-      topics: ["classification", "xgboost", "mlops"]
-    },
-    {
-      name: "NLP-Sentiment-Pipeline",
-      description:
-        "Sentiment analysis project for social media text with data cleaning, embeddings, and performance monitoring.",
-      url: "https://github.com/klutzyk/nlp-sentiment-pipeline",
-      language: "Python",
-      stars: 0,
-      topics: ["nlp", "transformers", "analytics"]
-    },
-    {
-      name: "Data-Science-Portfolio",
-      description:
-        "Collection of case studies and notebooks covering EDA, modeling, and deployment-ready experiments.",
-      url: "https://github.com/klutzyk/data-science-portfolio",
-      language: "Jupyter Notebook",
-      stars: 0,
-      topics: ["eda", "ml", "visualization"]
-    }
-  ]
+  featuredRepos: []
 };
+
+function escapeHTML(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
 function setText(id, value) {
   const element = document.getElementById(id);
   if (element) {
     element.textContent = value;
   }
+}
+
+function setRepoStatus(message, tone = "muted") {
+  const element = document.getElementById("repoStatus");
+  if (!element) return;
+  element.textContent = message;
+  element.dataset.tone = tone;
 }
 
 function setLink(id, href, fallback = "#") {
@@ -126,9 +114,9 @@ function renderExperience() {
     const article = document.createElement("article");
     article.className = "experience-item";
     article.innerHTML = `
-      <p class="experience-title">${entry.role}</p>
-      <span class="experience-period">${entry.period}</span>
-      <p>${entry.details}</p>
+      <p class="experience-title">${escapeHTML(entry.role)}</p>
+      <span class="experience-period">${escapeHTML(entry.period)}</span>
+      <p>${escapeHTML(entry.details)}</p>
     `;
     wrap.appendChild(article);
   });
@@ -136,16 +124,22 @@ function renderExperience() {
 
 function repoCardMarkup(repo) {
   const topics = (repo.topics || []).slice(0, 3);
+  const name = escapeHTML(repo.name || "Repository");
+  const description = escapeHTML(repo.description || "No description available yet.");
+  const url = escapeHTML(repo.url || "#");
+  const language = escapeHTML(repo.language || "Code");
+  const stars = typeof repo.stars === "number" ? `* ${repo.stars}` : "";
+
   return `
     <article class="repo-card">
-      <h3><a href="${repo.url}" target="_blank" rel="noreferrer">${repo.name}</a></h3>
-      <p>${repo.description || "No description available yet."}</p>
+      <h3><a href="${url}" target="_blank" rel="noreferrer">${name}</a></h3>
+      <p>${description}</p>
       <div class="repo-meta">
-        <span>${repo.language || "Code"}</span>
-        <span>* ${repo.stars ?? 0}</span>
+        <span>${language}</span>
+        <span>${stars}</span>
       </div>
       <div class="repo-topics">
-        ${topics.map((topic) => `<span>${topic}</span>`).join("")}
+        ${topics.length ? topics.map((topic) => `<span>${escapeHTML(topic)}</span>`).join("") : "<span>github</span>"}
       </div>
     </article>
   `;
@@ -161,24 +155,71 @@ function sanitizeGitHubUsername(username) {
   return username && username !== "your-github-username" ? username.trim() : "";
 }
 
+function mapFeaturedRepos() {
+  return (portfolio.featuredRepos || [])
+    .filter((repo) => repo && repo.name && repo.url)
+    .map((repo) => ({
+      name: repo.name,
+      description: repo.description || "Selected project.",
+      url: repo.url,
+      language: repo.language || "Project",
+      stars: typeof repo.stars === "number" ? repo.stars : null,
+      topics: Array.isArray(repo.topics) ? repo.topics : []
+    }));
+}
+
+function profileFallbackRepos(username) {
+  return [
+    {
+      name: "GitHub Repository Collection",
+      description: "Browse all current projects directly on GitHub.",
+      url: `https://github.com/${username}?tab=repositories`,
+      language: "GitHub",
+      stars: null,
+      topics: ["live profile"]
+    }
+  ];
+}
+
+async function fetchRepoList(username) {
+  const endpoint = `https://api.github.com/users/${username}/repos?type=owner&sort=updated&per_page=100`;
+  const response = await fetch(endpoint, { cache: "no-store" });
+
+  if (!response.ok) {
+    if (response.status === 403) {
+      throw new Error("GitHub API rate limit reached");
+    }
+    if (response.status === 404) {
+      throw new Error("GitHub profile not found");
+    }
+    throw new Error(`GitHub API returned ${response.status}`);
+  }
+
+  const data = await response.json();
+  if (!Array.isArray(data)) {
+    throw new Error("Unexpected GitHub API response");
+  }
+
+  return data;
+}
+
 async function loadGitHubRepos() {
   const username = sanitizeGitHubUsername(portfolio.githubUsername);
+  const featured = mapFeaturedRepos();
+
   if (!username) {
-    renderRepos(portfolio.fallbackProjects);
+    renderRepos(featured);
+    setRepoStatus("Add your GitHub username in app.js to load repositories.", "error");
     return;
   }
 
-  try {
-    const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`,
-      { headers: { Accept: "application/vnd.github+json" } }
-    );
-    if (!response.ok) throw new Error("Could not fetch repositories");
-    const data = await response.json();
+  setRepoStatus("Loading latest repositories from GitHub...");
 
+  try {
+    const data = await fetchRepoList(username);
     const repos = data
       .filter((repo) => !repo.fork)
-      .sort((a, b) => b.stargazers_count - a.stargazers_count)
+      .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
       .slice(0, 6)
       .map((repo) => ({
         name: repo.name,
@@ -189,9 +230,19 @@ async function loadGitHubRepos() {
         topics: repo.topics || []
       }));
 
-    renderRepos(repos.length ? repos : portfolio.fallbackProjects);
-  } catch (_error) {
-    renderRepos(portfolio.fallbackProjects);
+    if (repos.length > 0) {
+      renderRepos(repos);
+      setRepoStatus(`Showing live repositories from @${username}.`);
+      return;
+    }
+
+    const fallback = featured.length > 0 ? featured : profileFallbackRepos(username);
+    renderRepos(fallback);
+    setRepoStatus(`No public repositories found for @${username}.`, "error");
+  } catch (error) {
+    const fallback = featured.length > 0 ? featured : profileFallbackRepos(username);
+    renderRepos(fallback);
+    setRepoStatus(`Live repository feed unavailable (${error.message}). Showing GitHub profile link instead.`, "error");
   }
 }
 
