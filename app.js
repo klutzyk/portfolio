@@ -182,7 +182,7 @@ function profileFallbackRepos(username) {
 }
 
 async function fetchRepoList(username) {
-  const endpoint = `https://api.github.com/users/${username}/repos?type=owner&sort=updated&per_page=100`;
+  const endpoint = `https://api.github.com/users/${username}/repos?type=all&sort=updated&per_page=100`;
   const response = await fetch(endpoint, { cache: "no-store" });
 
   if (!response.ok) {
@@ -218,7 +218,7 @@ async function loadGitHubRepos() {
   try {
     const data = await fetchRepoList(username);
     const repos = data
-      .filter((repo) => !repo.fork)
+      .filter((repo) => repo && repo.html_url)
       .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
       .slice(0, 6)
       .map((repo) => ({
