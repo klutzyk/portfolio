@@ -238,7 +238,10 @@ async function loadGitHubRepos() {
 
     const fallback = featured.length > 0 ? featured : profileFallbackRepos(username);
     renderRepos(fallback);
-    setRepoStatus(`No public repositories found for @${username}.`, "error");
+    setRepoStatus(
+      `No public repositories found for @${username}. If your projects are private, they will not appear in this feed.`,
+      "error"
+    );
   } catch (error) {
     const fallback = featured.length > 0 ? featured : profileFallbackRepos(username);
     renderRepos(fallback);
