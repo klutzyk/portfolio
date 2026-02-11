@@ -182,7 +182,8 @@ function profileFallbackRepos(username) {
 }
 
 async function fetchRepoList(username) {
-  const endpoint = `https://api.github.com/users/${username}/repos?type=all&sort=updated&per_page=100`;
+  // `type=owner` keeps this aligned with repos that belong to the profile owner.
+  const endpoint = `https://api.github.com/users/${username}/repos?type=owner&sort=updated&per_page=100`;
   const response = await fetch(endpoint, { cache: "no-store" });
 
   if (!response.ok) {
@@ -203,6 +204,24 @@ async function fetchRepoList(username) {
   return data;
 }
 
+async function fetchRepoSearch(username) {
+  const endpoint = `https://api.github.com/search/repositories?q=user:${encodeURIComponent(
+    username
+  )}&sort=updated&order=desc&per_page=100`;
+  const response = await fetch(endpoint, { cache: "no-store" });
+
+  if (!response.ok) {
+    throw new Error(`GitHub search API returned ${response.status}`);
+  }
+
+  const data = await response.json();
+  if (!data || !Array.isArray(data.items)) {
+    throw new Error("Unexpected GitHub search API response");
+  }
+
+  return data.items;
+}
+
 async function loadGitHubRepos() {
   const username = sanitizeGitHubUsername(portfolio.githubUsername);
   const featured = mapFeaturedRepos();
@@ -216,8 +235,8 @@ async function loadGitHubRepos() {
   setRepoStatus("Loading latest repositories from GitHub...");
 
   try {
-    const data = await fetchRepoList(username);
-    const repos = data
+    const ownerRepos = await fetchRepoList(username);
+    let repos = ownerRepos
       .filter((repo) => repo && repo.html_url)
       .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
       .slice(0, 6)
@@ -229,6 +248,22 @@ async function loadGitHubRepos() {
         stars: repo.stargazers_count,
         topics: repo.topics || []
       }));
+
+    if (repos.length === 0) {
+      const searched = await fetchRepoSearch(username);
+      repos = searched
+        .filter((repo) => repo && repo.html_url)
+        .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+        .slice(0, 6)
+        .map((repo) => ({
+          name: repo.name,
+          description: repo.description,
+          url: repo.html_url,
+          language: repo.language,
+          stars: repo.stargazers_count,
+          topics: repo.topics || []
+        }));
+    }
 
     if (repos.length > 0) {
       renderRepos(repos);
