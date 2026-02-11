@@ -1,68 +1,85 @@
 const portfolio = {
   name: "Kulunu Abeysinghe",
-  role: "Budding Data Scientist & AI Engineer",
-  location: "United States",
+  role: "Data Scientist and AI Engineer",
+  location: "Melbourne, Australia",
   about:
-    "I focus on practical data science and AI systems that turn messy data into reliable decisions, from experimentation to deployment.",
-  githubUsername: "kalz9",
-  linkedinUrl: "",
+    "I build production-minded data and AI solutions that connect rigorous experimentation with real-world deployment, focusing on measurable outcomes, reproducible workflows, and clean engineering practices.",
+  githubUsername: "klutzyk",
+  linkedinUrl: "https://www.linkedin.com/in/kulunuabeysinghe/",
   email: "kabe0009@student.monash.edu",
   resumeUrl: "",
+  specialties: "Machine Learning, NLP, Analytics, MLOps",
+  status: "Open to graduate and entry-level DS/AI roles",
   skills: [
     "Python",
     "SQL",
+    "R",
+    "NumPy",
     "Pandas",
+    "Polars",
     "Scikit-learn",
     "PyTorch",
     "TensorFlow",
+    "LangChain",
+    "OpenAI APIs",
+    "Docker",
+    "FastAPI",
+    "Power BI",
+    "Tableau",
     "MLOps",
     "Data Visualization",
-    "Prompt Engineering",
-    "Git & GitHub",
+    "Prompt Engineering and Evaluation",
+    "Git and GitHub"
   ],
   experience: [
     {
-      role: "AI/ML Project Builder",
+      role: "AI and ML Project Builder",
       period: "2024 - Present",
       details:
-        "Building personal and collaborative machine learning projects, with focus on model quality, reproducibility, and practical impact.",
+        "Designing and shipping end-to-end projects that move from exploratory analysis to model serving, with emphasis on reproducibility, evaluation quality, and maintainable code."
     },
     {
-      role: "Data Science Learner",
+      role: "Data Science and AI Practitioner",
       period: "2023 - Present",
       details:
-        "Studying core statistics, model evaluation, and engineering fundamentals while shipping portfolio-ready case studies.",
+        "Building a strong applied foundation across statistics, machine learning, NLP, and LLM workflows while turning learning into public GitHub deliverables."
     },
+    {
+      role: "Collaborative Problem Solver",
+      period: "Ongoing",
+      details:
+        "Experienced with version-controlled teamwork, structured experimentation, and communicating technical findings clearly for both technical and non-technical audiences."
+    }
   ],
   fallbackProjects: [
     {
       name: "Customer-Churn-Classifier",
       description:
         "End-to-end churn prediction workflow with feature engineering, model comparison, and explainability.",
-      url: "https://github.com/your-github-username/customer-churn-classifier",
+      url: "https://github.com/klutzyk/customer-churn-classifier",
       language: "Python",
       stars: 0,
-      topics: ["classification", "xgboost", "mlops"],
+      topics: ["classification", "xgboost", "mlops"]
     },
     {
       name: "NLP-Sentiment-Pipeline",
       description:
         "Sentiment analysis project for social media text with data cleaning, embeddings, and performance monitoring.",
-      url: "https://github.com/your-github-username/nlp-sentiment-pipeline",
+      url: "https://github.com/klutzyk/nlp-sentiment-pipeline",
       language: "Python",
       stars: 0,
-      topics: ["nlp", "transformers", "analytics"],
+      topics: ["nlp", "transformers", "analytics"]
     },
     {
       name: "Data-Science-Portfolio",
       description:
         "Collection of case studies and notebooks covering EDA, modeling, and deployment-ready experiments.",
-      url: "https://github.com/your-github-username/data-science-portfolio",
+      url: "https://github.com/klutzyk/data-science-portfolio",
       language: "Jupyter Notebook",
       stars: 0,
-      topics: ["eda", "ml", "visualization"],
-    },
-  ],
+      topics: ["eda", "ml", "visualization"]
+    }
+  ]
 };
 
 function setText(id, value) {
@@ -75,10 +92,17 @@ function setText(id, value) {
 function setLink(id, href, fallback = "#") {
   const element = document.getElementById(id);
   if (!element) return;
-  element.href = href || fallback;
-  if (!href) {
-    element.setAttribute("aria-disabled", "true");
+
+  if (href) {
+    element.href = href;
+    element.classList.remove("is-disabled");
+    element.removeAttribute("aria-disabled");
+    return;
   }
+
+  element.href = fallback;
+  element.classList.add("is-disabled");
+  element.setAttribute("aria-disabled", "true");
 }
 
 function renderSkills() {
@@ -118,7 +142,7 @@ function repoCardMarkup(repo) {
       <p>${repo.description || "No description available yet."}</p>
       <div class="repo-meta">
         <span>${repo.language || "Code"}</span>
-        <span>★ ${repo.stars ?? 0}</span>
+        <span>* ${repo.stars ?? 0}</span>
       </div>
       <div class="repo-topics">
         ${topics.map((topic) => `<span>${topic}</span>`).join("")}
@@ -162,7 +186,7 @@ async function loadGitHubRepos() {
         url: repo.html_url,
         language: repo.language,
         stars: repo.stargazers_count,
-        topics: repo.topics || [],
+        topics: repo.topics || []
       }));
 
     renderRepos(repos.length ? repos : portfolio.fallbackProjects);
@@ -172,13 +196,15 @@ async function loadGitHubRepos() {
 }
 
 function boot() {
-  const headline = `${portfolio.role} building practical, high-impact ML solutions.`;
+  const headline = `${portfolio.role} focused on building practical, high-impact machine learning systems.`;
 
   setText("brandName", portfolio.name);
   setText("heroName", portfolio.name);
   setText("heroTagline", headline);
   setText("aboutText", portfolio.about);
   setText("locationText", portfolio.location);
+  setText("specialtiesText", portfolio.specialties);
+  setText("statusText", portfolio.status);
   setText("footerName", portfolio.name);
 
   setLink(
@@ -190,7 +216,7 @@ function boot() {
     `https://github.com/${sanitizeGitHubUsername(portfolio.githubUsername)}?tab=repositories`
   );
   setLink("linkedinLink", portfolio.linkedinUrl);
-  setLink("resumeButton", portfolio.resumeUrl);
+  setLink("resumeButton", portfolio.resumeUrl, "#work");
 
   const emailLink = document.getElementById("emailLink");
   if (emailLink) {

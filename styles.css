@@ -184,6 +184,12 @@ h2 {
   background: var(--paper);
 }
 
+.btn.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .about {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
