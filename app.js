@@ -1,57 +1,119 @@
 const portfolio = {
   name: "Kulunu Abeysinghe",
   role: "Data Scientist and AI Engineer",
+  heroRole: "Data Scientist | AI Engineer | Building Applied AI Systems",
   location: "Melbourne, Australia",
+  phone: "+61 0466458606",
   about:
-    "I build production-minded data and AI solutions that connect rigorous experimentation with real-world deployment, focusing on measurable outcomes, reproducible workflows, and clean engineering practices.",
+    "I like building AI and data products that are genuinely fun to use, especially projects with interactive flows, game-like thinking, and clear real-world outcomes.",
+  aboutExtra:
+    "I care about shipping things people actually enjoy, not just notebooks and demos. My focus is practical machine learning, clean APIs, and data systems that hold up in production.",
+  contactIntro:
+    "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you.",
   githubUsername: "klutzyk",
   linkedinUrl: "https://www.linkedin.com/in/kulunuabeysinghe/",
-  email: "kabe0009@student.monash.edu",
-  resumeUrl: "",
-  specialties: "Machine Learning, NLP, Analytics, MLOps",
+  email: "kulunuavinash@gmail.com",
   status: "Open to graduate and entry-level DS/AI roles",
-  skills: [
-    "Python",
-    "SQL",
-    "R",
-    "NumPy",
-    "Pandas",
-    "Polars",
-    "Scikit-learn",
-    "PyTorch",
-    "TensorFlow",
-    "LangChain",
-    "OpenAI APIs",
-    "Docker",
-    "FastAPI",
-    "Power BI",
-    "Tableau",
-    "MLOps",
-    "Data Visualization",
-    "Prompt Engineering and Evaluation",
-    "Git and GitHub"
+  aboutStats: [
+    { value: "3+", label: "Years Building AI and Data Projects" },
+    { value: "10+", label: "Projects and Experiments" },
+    { value: "Always", label: "Curiosity for Learning" }
   ],
-  experience: [
+  skillGroups: [
     {
-      role: "AI and ML Project Builder",
-      period: "2024 - Present",
-      details:
-        "Designing and shipping end-to-end projects that move from exploratory analysis to model serving, with emphasis on reproducibility, evaluation quality, and maintainable code."
+      category: "Data Science",
+      items: ["Python", "R", "Pandas", "Scikit-learn", "Statistical Modeling", "Data Visualization"]
     },
     {
-      role: "Data Science and AI Practitioner",
-      period: "2023 - Present",
-      details:
-        "Building a strong applied foundation across statistics, machine learning, NLP, and LLM workflows while turning learning into public GitHub deliverables."
+      category: "AI and LLM",
+      items: ["NLP", "Machine Learning", "Deep Learning", "LLM Evaluation", "PyTorch", "TensorFlow"]
     },
     {
-      role: "Collaborative Problem Solver",
-      period: "Ongoing",
-      details:
-        "Experienced with version-controlled teamwork, structured experimentation, and communicating technical findings clearly for both technical and non-technical audiences."
+      category: "Cloud and MLOps",
+      items: ["AWS", "Azure", "Docker", "Git", "CI/CD", "FastAPI"]
+    },
+    {
+      category: "Database Systems",
+      items: ["PostgreSQL", "SQL Server", "Oracle", "AWS RDS", "MongoDB", "Vector Databases"]
+    },
+    {
+      category: "Full Stack Development",
+      items: ["TypeScript", "Node.js", "React", "Vue.js", "Django APIs", "Data Migrations"]
     }
   ],
-  featuredRepos: []
+  featuredRepos: [
+    {
+      name: "Gamblr",
+      description:
+        "End-to-end NBA player prop analysis and prediction platform. Ingests NBA stats, schedules, lineups, and odds via daily cached/rate-limited pipelines, engineers advanced features, trains and retrains XGBoost models, and serves confidence-scored predictions through APIs. Supports NBA for now.",
+      url: "https://github.com/klutzyk/Gamblr",
+      liveUrl: "https://github.com/klutzyk/Gamblr",
+      topics: [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "SQLAlchemy",
+        "Pandas",
+        "NumPy",
+        "XGBoost",
+        "Alembic",
+        "NBA API",
+        "The Odds API",
+        "ML Retraining",
+        "Time-Series Validation"
+      ],
+      image:
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      name: "AusRentals (WiP)",
+      description:
+        "Mobile iOS app for renting or lending vehicles, focused on the Australian market. Built with React Native and currently tested using Expo Go.",
+      url: "https://github.com/klutzyk/AusRentals",
+      liveUrl: "https://github.com/klutzyk/AusRentals",
+      topics: ["React Native", "Expo Go", "iOS", "Mobile App", "Marketplace", "Australia"],
+      image:
+        "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      name: "Data Insights Agent (WiP)",
+      description:
+        "A local, cost-free AI agent that analyzes a public dataset, answers natural-language questions, generates charts, and exports a report. Orchestrated with LangChain, with a CLI or lightweight Streamlit UI.",
+      url: "https://github.com/klutzyk/data-insights-agent",
+      liveUrl: "https://github.com/klutzyk/data-insights-agent",
+      topics: ["NLP", "Agents", "LLM", "Data Analysis"],
+      image:
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80"
+    },
+    {
+      name: "RipOffRoo.live",
+      description:
+        "Final year platform helping seniors avoid online scams. Included open-data pipelines in R/Python, ML served via Django API, AWS RDS PostgreSQL security and migrations, Node.js/TypeScript MVC APIs, and Vue.js frontend with analytics dashboards.",
+      url: "https://github.com/hassan-akbar/FIT5120/",
+      liveUrl: "https://github.com/hassan-akbar/FIT5120/",
+      topics: ["Python", "R", "Tableau", "AWS RDS", "Node.js", "Vue.js"],
+      image:
+        "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=80"
+    }
+  ]
+};
+
+const projectImagePool = [
+  "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=80"
+];
+
+const repoOverrides = {
+  portfolio: {
+    summary: "Personal portfolio website showcasing AI and data science projects with a polished frontend.",
+    tags: ["HTML", "CSS", "JavaScript"]
+  }
 };
 
 function escapeHTML(value) {
@@ -65,9 +127,7 @@ function escapeHTML(value) {
 
 function setText(id, value) {
   const element = document.getElementById(id);
-  if (element) {
-    element.textContent = value;
-  }
+  if (element) element.textContent = value;
 }
 
 function setRepoStatus(message, tone = "muted") {
@@ -93,53 +153,98 @@ function setLink(id, href, fallback = "#") {
   element.setAttribute("aria-disabled", "true");
 }
 
-function renderSkills() {
-  const list = document.getElementById("skillsList");
-  if (!list) return;
-
-  list.innerHTML = "";
-  portfolio.skills.forEach((skill) => {
-    const item = document.createElement("li");
-    item.textContent = skill;
-    list.appendChild(item);
-  });
+function toTitleCase(text) {
+  return text
+    .replaceAll(/[-_]+/g, " ")
+    .replaceAll(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
-function renderExperience() {
-  const wrap = document.getElementById("experienceList");
+function summarizeRepo(repo) {
+  const override = repoOverrides[(repo.name || "").toLowerCase()];
+  if (override?.summary) return override.summary;
+
+  if (repo.description) {
+    const description = repo.description.trim();
+    return description.endsWith(".") ? description : `${description}.`;
+  }
+
+  const projectLabel = toTitleCase(repo.name || "Project");
+  const language = repo.language || "software";
+  return `${projectLabel} is a ${language} project focused on practical implementation and clean engineering.`;
+}
+
+function deriveRepoTags(repo) {
+  const override = repoOverrides[(repo.name || "").toLowerCase()];
+  if (override?.tags?.length) return override.tags.slice(0, 8);
+
+  const tags = [];
+  if (repo.language) tags.push(repo.language);
+  if (Array.isArray(repo.topics)) {
+    repo.topics.slice(0, 8).forEach((topic) => {
+      if (topic && !tags.includes(topic)) tags.push(topic);
+    });
+  }
+
+  if (tags.length === 0) tags.push("GitHub");
+  return tags.slice(0, 8);
+}
+
+function renderAboutStats() {
+  const wrap = document.getElementById("aboutStats");
   if (!wrap) return;
-  wrap.innerHTML = "";
 
-  portfolio.experience.forEach((entry) => {
-    const article = document.createElement("article");
-    article.className = "experience-item";
-    article.innerHTML = `
-      <p class="experience-title">${escapeHTML(entry.role)}</p>
-      <span class="experience-period">${escapeHTML(entry.period)}</span>
-      <p>${escapeHTML(entry.details)}</p>
-    `;
-    wrap.appendChild(article);
-  });
+  wrap.innerHTML = portfolio.aboutStats
+    .map(
+      (item) => `
+      <article class="stat-item">
+        <strong>${escapeHTML(item.value)}</strong>
+        <span>${escapeHTML(item.label)}</span>
+      </article>
+    `
+    )
+    .join("");
 }
 
-function repoCardMarkup(repo) {
-  const topics = (repo.topics || []).slice(0, 3);
-  const name = escapeHTML(repo.name || "Repository");
-  const description = escapeHTML(repo.description || "No description available yet.");
+function renderSkillGroups() {
+  const grid = document.getElementById("skillsGrid");
+  if (!grid) return;
+
+  grid.innerHTML = portfolio.skillGroups
+    .map(
+      (group, index) => `
+      <article class="skill-card reveal-item" style="--delay:${index * 90}ms">
+        <h3>${escapeHTML(group.category)}</h3>
+        <ul>
+          ${group.items.map((item) => `<li>${escapeHTML(item)}</li>`).join("")}
+        </ul>
+      </article>
+    `
+    )
+    .join("");
+}
+
+function repoCardMarkup(repo, index) {
+  const tags = deriveRepoTags(repo);
+  const title = escapeHTML(repo.name || "Repository");
+  const description = escapeHTML(summarizeRepo(repo));
   const url = escapeHTML(repo.url || "#");
-  const language = escapeHTML(repo.language || "Code");
-  const stars = typeof repo.stars === "number" ? `* ${repo.stars}` : "";
+  const image = escapeHTML(repo.image || projectImagePool[index % projectImagePool.length]);
 
   return `
-    <article class="repo-card">
-      <h3><a href="${url}" target="_blank" rel="noreferrer">${name}</a></h3>
-      <p>${description}</p>
-      <div class="repo-meta">
-        <span>${language}</span>
-        <span>${stars}</span>
-      </div>
-      <div class="repo-topics">
-        ${topics.length ? topics.map((topic) => `<span>${escapeHTML(topic)}</span>`).join("") : "<span>github</span>"}
+    <article class="repo-card reveal-item" style="--delay:${index * 90}ms">
+      <img class="repo-banner" src="${image}" alt="${title} preview" loading="lazy" />
+      <div class="repo-content">
+        <h3><a href="${url}" target="_blank" rel="noreferrer">${title}</a></h3>
+        <p>${description}</p>
+        <div class="repo-topics">
+          ${tags.map((tag) => `<span>${escapeHTML(toTitleCase(tag))}</span>`).join("")}
+        </div>
+        <div class="repo-actions">
+          <a class="repo-btn" href="${url}" target="_blank" rel="noreferrer">Code</a>
+          <a class="repo-btn primary is-disabled" href="#" aria-disabled="true" tabindex="-1">Live Demo (Soon)</a>
+        </div>
       </div>
     </article>
   `;
@@ -148,11 +253,7 @@ function repoCardMarkup(repo) {
 function renderRepos(repos) {
   const repoGrid = document.getElementById("repoGrid");
   if (!repoGrid) return;
-  repoGrid.innerHTML = repos.map(repoCardMarkup).join("");
-}
-
-function sanitizeGitHubUsername(username) {
-  return username && username !== "your-github-username" ? username.trim() : "";
+  repoGrid.innerHTML = repos.map((repo, index) => repoCardMarkup(repo, index)).join("");
 }
 
 function mapFeaturedRepos() {
@@ -160,161 +261,106 @@ function mapFeaturedRepos() {
     .filter((repo) => repo && repo.name && repo.url)
     .map((repo) => ({
       name: repo.name,
-      description: repo.description || "Selected project.",
+      description: repo.description || "",
       url: repo.url,
-      language: repo.language || "Project",
-      stars: typeof repo.stars === "number" ? repo.stars : null,
-      topics: Array.isArray(repo.topics) ? repo.topics : []
+      liveUrl: repo.liveUrl || repo.url,
+      language: repo.language || "",
+      topics: Array.isArray(repo.topics) ? repo.topics : [],
+      image: repo.image || ""
     }));
 }
 
 function profileFallbackRepos(username) {
   return [
     {
-      name: "GitHub Repository Collection",
+      name: "GitHub Projects",
       description: "Browse all current projects directly on GitHub.",
       url: `https://github.com/${username}?tab=repositories`,
+      liveUrl: `https://github.com/${username}?tab=repositories`,
       language: "GitHub",
-      stars: null,
-      topics: ["live profile"]
+      topics: ["profile"],
+      image: projectImagePool[0]
     }
   ];
 }
 
-async function fetchRepoList(username) {
-  // `type=owner` keeps this aligned with repos that belong to the profile owner.
-  const endpoint = `https://api.github.com/users/${username}/repos?type=owner&sort=updated&per_page=100`;
-  const response = await fetch(endpoint, { cache: "no-store" });
-
-  if (!response.ok) {
-    if (response.status === 403) {
-      throw new Error("GitHub API rate limit reached");
-    }
-    if (response.status === 404) {
-      throw new Error("GitHub profile not found");
-    }
-    throw new Error(`GitHub API returned ${response.status}`);
-  }
-
-  const data = await response.json();
-  if (!Array.isArray(data)) {
-    throw new Error("Unexpected GitHub API response");
-  }
-
-  return data;
-}
-
-async function fetchRepoSearch(username) {
-  const endpoint = `https://api.github.com/search/repositories?q=user:${encodeURIComponent(
-    username
-  )}&sort=updated&order=desc&per_page=100`;
-  const response = await fetch(endpoint, { cache: "no-store" });
-
-  if (!response.ok) {
-    throw new Error(`GitHub search API returned ${response.status}`);
-  }
-
-  const data = await response.json();
-  if (!data || !Array.isArray(data.items)) {
-    throw new Error("Unexpected GitHub search API response");
-  }
-
-  return data.items;
-}
-
-async function loadGitHubRepos() {
-  const username = sanitizeGitHubUsername(portfolio.githubUsername);
+function loadSelectedRepos() {
   const featured = mapFeaturedRepos();
-
-  if (!username) {
+  if (featured.length > 0) {
     renderRepos(featured);
-    setRepoStatus("Add your GitHub username in app.js to load repositories.", "error");
+    // setRepoStatus("Selected featured projects.");
     return;
   }
 
-  setRepoStatus("Loading latest repositories from GitHub...");
+  const username = portfolio.githubUsername?.trim();
+  renderRepos(profileFallbackRepos(username || "klutzyk"));
+  setRepoStatus("Featured list is empty. Showing GitHub profile instead.", "error");
+}
 
-  try {
-    const ownerRepos = await fetchRepoList(username);
-    let repos = ownerRepos
-      .filter((repo) => repo && repo.html_url)
-      .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-      .slice(0, 6)
-      .map((repo) => ({
-        name: repo.name,
-        description: repo.description,
-        url: repo.html_url,
-        language: repo.language,
-        stars: repo.stargazers_count,
-        topics: repo.topics || []
-      }));
+function setupContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
 
-    if (repos.length === 0) {
-      const searched = await fetchRepoSearch(username);
-      repos = searched
-        .filter((repo) => repo && repo.html_url)
-        .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-        .slice(0, 6)
-        .map((repo) => ({
-          name: repo.name,
-          description: repo.description,
-          url: repo.html_url,
-          language: repo.language,
-          stars: repo.stargazers_count,
-          topics: repo.topics || []
-        }));
-    }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("contactName")?.value?.trim() || "";
+    const email = document.getElementById("contactEmail")?.value?.trim() || "";
+    const message = document.getElementById("contactMessage")?.value?.trim() || "";
 
-    if (repos.length > 0) {
-      renderRepos(repos);
-      setRepoStatus(`Showing live repositories from @${username}.`);
-      return;
-    }
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name || "visitor"}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:${portfolio.email}?subject=${subject}&body=${body}`;
+  });
+}
 
-    const fallback = featured.length > 0 ? featured : profileFallbackRepos(username);
-    renderRepos(fallback);
-    setRepoStatus(
-      `No public repositories found for @${username}. If your projects are private, they will not appear in this feed.`,
-      "error"
-    );
-  } catch (error) {
-    const fallback = featured.length > 0 ? featured : profileFallbackRepos(username);
-    renderRepos(fallback);
-    setRepoStatus(`Live repository feed unavailable (${error.message}). Showing GitHub profile link instead.`, "error");
-  }
+function initScrollAnimations() {
+  const sections = document.querySelectorAll(".section-reveal");
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+  );
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 function boot() {
-  const headline = `${portfolio.role} focused on building practical, high-impact machine learning systems.`;
-
-  setText("brandName", portfolio.name);
   setText("heroName", portfolio.name);
-  setText("heroTagline", headline);
+  setText("heroRole", portfolio.heroRole || portfolio.role);
+  setText("heroTagline", `${portfolio.role} who enjoys games, playful products, and practical AI that solves real problems.`);
   setText("aboutText", portfolio.about);
-  setText("locationText", portfolio.location);
-  setText("specialtiesText", portfolio.specialties);
-  setText("statusText", portfolio.status);
+  setText("aboutExtra", portfolio.aboutExtra);
+  setText("contactIntro", portfolio.contactIntro);
+  setText("contactLocation", portfolio.location);
   setText("footerName", portfolio.name);
 
-  setLink(
-    "githubButton",
-    `https://github.com/${sanitizeGitHubUsername(portfolio.githubUsername)}`
-  );
-  setLink(
-    "repoProfileLink",
-    `https://github.com/${sanitizeGitHubUsername(portfolio.githubUsername)}?tab=repositories`
-  );
+  const username = portfolio.githubUsername?.trim();
+  setLink("repoProfileLink", username ? `https://github.com/${username}?tab=repositories` : "#");
+  setLink("resumeButton", "#contact");
   setLink("linkedinLink", portfolio.linkedinUrl);
-  setLink("resumeButton", portfolio.resumeUrl, "#work");
+  setLink("linkedinIconLink", portfolio.linkedinUrl);
+  setLink("githubIconLink", username ? `https://github.com/${username}` : "#");
+  setLink("githubContactLink", username ? `https://github.com/${username}` : "#");
 
-  const emailLink = document.getElementById("emailLink");
-  if (emailLink) {
-    emailLink.href = `mailto:${portfolio.email}`;
-  }
+  const emailHref = `mailto:${portfolio.email}`;
+  setLink("emailLink", emailHref);
+  setLink("emailIconLink", emailHref);
+  setText("emailLink", portfolio.email);
+  setLink("phoneLink", `tel:${portfolio.phone.replace(/\s+/g, "")}`);
+  setText("phoneLink", portfolio.phone);
 
-  renderSkills();
-  renderExperience();
-  loadGitHubRepos();
+  renderAboutStats();
+  renderSkillGroups();
+  loadSelectedRepos();
+  setupContactForm();
+  initScrollAnimations();
 
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());

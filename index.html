@@ -11,88 +11,157 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="texture" aria-hidden="true"></div>
-    <header class="site-header">
-      <a class="brand" href="#top">
-        <span class="brand-mark">DS/AI</span>
-        <span id="brandName">Your Name</span>
-      </a>
-      <nav aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
     <main id="top">
       <section class="hero section-reveal">
-        <p class="eyebrow">Open to Data Science and AI Roles</p>
-        <h1 id="heroName">Your Name</h1>
-        <p class="tagline" id="heroTagline">
-          Budding Data Scientist & AI Engineer building practical, high-impact
-          machine learning solutions.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" id="githubButton" href="#" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn btn-ghost" id="resumeButton" href="#" target="_blank" rel="noreferrer">Resume</a>
+        <div class="hero-bg" aria-hidden="true">
+          <span class="blob blob-1"></span>
+          <span class="blob blob-2"></span>
         </div>
-      </section>
 
-      <section class="about section-reveal">
-        <div>
-          <h2>About</h2>
-          <p id="aboutText">
-            I focus on end-to-end AI products: data wrangling, model training,
-            evaluation, deployment, and clear business impact.
+        <div class="hero-inner">
+          <p class="eyebrow">
+            <span class="eyebrow-mark" aria-hidden="true">&lt;/&gt;</span>
+            Available for new projects
           </p>
+          <h1>Hi, I'm <span id="heroName">Your Name</span></h1>
+          <p class="hero-role" id="heroRole">Full Stack Engineer | Building Digital Experiences</p>
+          <p class="tagline" id="heroTagline">
+            Passionate about creating elegant solutions to complex problems.
+            Specialized in React, Node.js, and cloud technologies.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" id="viewWorkButton" href="#work">View My Work</a>
+            <a class="btn btn-light" id="resumeButton" href="#contact">Get In Touch</a>
+          </div>
+
+          <div class="hero-social" aria-label="Social links">
+            <a id="githubIconLink" href="#" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8a10.2 10.2 0 0 0-3.22 19.88c.51.1.69-.22.69-.49l-.01-1.72c-2.8.61-3.39-1.2-3.39-1.2-.46-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.1.64-1.35-2.24-.26-4.59-1.12-4.59-4.97 0-1.1.39-2 1.03-2.71-.1-.25-.45-1.28.1-2.67 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.55 1.39.2 2.42.1 2.67.64.71 1.03 1.61 1.03 2.71 0 3.86-2.35 4.7-4.6 4.96.36.31.68.92.68 1.86l-.01 2.75c0 .27.18.59.7.49A10.2 10.2 0 0 0 12 1.8Z"/></svg>
+            </a>
+            <a id="linkedinIconLink" href="#" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 0 1 0 3.12ZM8.5 10H5.38v8.63H8.5V10Zm4.98 0h-2.99v8.63h3.11v-4.53c0-2.52 3.28-2.76 3.28 0v4.53H20V13c0-4.35-4.97-4.19-6.52-2.05V10Z"/></svg>
+            </a>
+            <a id="emailIconLink" href="#" aria-label="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.75A1.75 1.75 0 0 1 4.75 4h14.5A1.75 1.75 0 0 1 21 5.75v12.5A1.75 1.75 0 0 1 19.25 20H4.75A1.75 1.75 0 0 1 3 18.25V5.75Zm1.93-.25L12 10.55l7.07-5.05H4.93Zm14.57 13V7.3l-7.06 5.03a.75.75 0 0 1-.88 0L4.5 7.3v11.2h15Z"/></svg>
+            </a>
+          </div>
+
+          <a class="scroll-indicator" href="#about" aria-label="Scroll to about"><span></span></a>
         </div>
-        <ul class="quick-facts">
-          <li>
-            <span class="fact-label">Location</span>
-            <span class="fact-value" id="locationText">United States</span>
-          </li>
-          <li>
-            <span class="fact-label">Specialties</span>
-            <span class="fact-value" id="specialtiesText">Machine Learning, NLP, Analytics, MLOps</span>
-          </li>
-          <li>
-            <span class="fact-label">Status</span>
-            <span class="fact-value" id="statusText">Open to graduate and entry-level DS/AI roles</span>
-          </li>
-        </ul>
       </section>
 
-      <section id="work" class="section-reveal">
-        <div class="section-head">
-          <h2>Featured Work</h2>
-          <a id="repoProfileLink" href="#" target="_blank" rel="noreferrer">View all repositories</a>
+      <section id="about" class="about section-reveal">
+        <div class="section-title-wrap">
+          <h2>About Me</h2>
+          <span class="title-line"></span>
         </div>
+
+        <div class="about-grid">
+          <div class="about-image-wrap reveal-left">
+            <div class="about-image-accent"></div>
+            <img
+              src="./pexels-rahimegul-33905125.jpg"
+              alt="About section image"
+              class="about-image"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="about-content reveal-right">
+            <h3>Fun-first products, powered by AI and data</h3>
+            <p id="aboutText">
+              I build production-minded data and AI solutions that connect rigorous
+              experimentation with real-world deployment.
+            </p>
+            <p id="aboutExtra"></p>
+
+            <div class="stat-row" id="aboutStats"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="skills section-reveal">
+        <div class="section-title-wrap">
+          <h2>Technical Skills</h2>
+        </div>
+        <div id="skillsGrid" class="skills-grid"></div>
+      </section>
+
+      <section id="work" class="projects section-reveal">
+        <div class="section-title-wrap">
+          <h2>Featured Projects</h2>
+          <span class="title-line"></span>
+        </div>
+        
         <p id="repoStatus" class="repo-status" aria-live="polite"></p>
         <div id="repoGrid" class="repo-grid" aria-live="polite"></div>
-      </section>
-
-      <section id="experience" class="section-reveal">
-        <h2>Experience Snapshot</h2>
-        <div id="experienceList" class="experience-list"></div>
-      </section>
-
-      <section class="section-reveal">
-        <h2>Toolbox</h2>
-        <ul id="skillsList" class="skills-list"></ul>
+        <p class="view-all">
+          <a id="repoProfileLink" href="#" target="_blank" rel="noreferrer">View all repositories on GitHub</a>
+        </p>
       </section>
 
       <section id="contact" class="contact section-reveal">
-        <h2>Let's build something useful.</h2>
-        <p>Reach out for internships, graduate roles, or entry-level DS/AI opportunities.</p>
-        <div class="contact-actions">
-          <a id="emailLink" class="btn btn-primary" href="#">Email me</a>
-          <a id="linkedinLink" class="btn btn-ghost" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="section-title-wrap">
+          <h2>Get In Touch</h2>
+          <span class="title-line"></span>
+        </div>
+
+        <p class="section-subtitle">Have a project in mind or want to collaborate? Feel free to reach out.</p>
+        <div class="contact-grid">
+          <div class="contact-left">
+            <h3>Let's Connect</h3>
+            <p id="contactIntro">I'm always interested in hearing about new projects and opportunities.</p>
+
+            <div class="contact-cards">
+              <article class="contact-card reveal-up">
+                <div class="contact-icon">✉</div>
+                <div>
+                  <p class="contact-label">Email</p>
+                  <a id="emailLink" href="#">you@example.com</a>
+                </div>
+              </article>
+              <article class="contact-card reveal-up">
+                <div class="contact-icon">☎</div>
+                <div>
+                  <p class="contact-label">Phone</p>
+                  <a id="phoneLink" href="#">+61 000 000 000</a>
+                </div>
+              </article>
+              <article class="contact-card reveal-up">
+                <div class="contact-icon">⌖</div>
+                <div>
+                  <p class="contact-label">Location</p>
+                  <p id="contactLocation">Melbourne, Australia</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="contact-actions">
+              <a id="githubContactLink" class="btn btn-outline" href="#" target="_blank" rel="noreferrer">GitHub</a>
+              <a id="linkedinLink" class="btn btn-outline" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <h3>Send Me a Message</h3>
+            <label for="contactName">Name</label>
+            <input id="contactName" name="name" type="text" placeholder="Your name" required />
+
+            <label for="contactEmail">Email</label>
+            <input id="contactEmail" name="email" type="email" placeholder="your.email@example.com" required />
+
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" rows="7" placeholder="Tell me about your project..." required></textarea>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
         </div>
       </section>
     </main>
