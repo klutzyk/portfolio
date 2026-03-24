@@ -457,6 +457,19 @@ h2 {
   font-size: clamp(0.92rem, 1.1vw, 1rem);
 }
 
+.repo-notice {
+  margin: -0.4rem 0 1rem;
+  padding: 0.45rem 0.6rem;
+  border-left: 3px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  background: #fff7ed;
+  color: #9a3412;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 .repo-topics {
   display: flex;
   flex-wrap: wrap;

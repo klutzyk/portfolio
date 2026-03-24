@@ -46,8 +46,10 @@ const portfolio = {
       name: "Gamblr",
       description:
         "End-to-end NBA player prop analysis and prediction platform. Ingests NBA stats, schedules, lineups, and odds via daily cached/rate-limited pipelines, engineers advanced features, trains and retrains XGBoost models, and serves confidence-scored predictions through APIs. Supports NBA for now.",
+      notice:
+        "Live at gamblr.pro as an MVP. Currently on free-tier hosting, so response times can be slower.",
       url: "https://github.com/klutzyk/Gamblr",
-      liveUrl: "https://github.com/klutzyk/Gamblr",
+      liveUrl: "https://gamblr.pro",
       topics: [
         "Python",
         "FastAPI",
@@ -229,7 +231,10 @@ function repoCardMarkup(repo, index) {
   const tags = deriveRepoTags(repo);
   const title = escapeHTML(repo.name || "Repository");
   const description = escapeHTML(summarizeRepo(repo));
+  const notice = repo.notice ? escapeHTML(repo.notice) : "";
   const url = escapeHTML(repo.url || "#");
+  const liveUrl = escapeHTML(repo.liveUrl || "");
+  const hasLiveDemo = Boolean(repo.liveUrl && repo.liveUrl !== repo.url);
   const image = escapeHTML(repo.image || projectImagePool[index % projectImagePool.length]);
 
   return `
@@ -238,12 +243,17 @@ function repoCardMarkup(repo, index) {
       <div class="repo-content">
         <h3><a href="${url}" target="_blank" rel="noreferrer">${title}</a></h3>
         <p>${description}</p>
+        ${notice ? `<p class="repo-notice">${notice}</p>` : ""}
         <div class="repo-topics">
           ${tags.map((tag) => `<span>${escapeHTML(toTitleCase(tag))}</span>`).join("")}
         </div>
         <div class="repo-actions">
           <a class="repo-btn" href="${url}" target="_blank" rel="noreferrer">Code</a>
-          <a class="repo-btn primary is-disabled" href="#" aria-disabled="true" tabindex="-1">Live Demo (Soon)</a>
+          ${
+            hasLiveDemo
+              ? `<a class="repo-btn primary" href="${liveUrl}" target="_blank" rel="noreferrer">Live Site</a>`
+              : `<a class="repo-btn primary is-disabled" href="#" aria-disabled="true" tabindex="-1">Live Demo (Soon)</a>`
+          }
         </div>
       </div>
     </article>
@@ -264,6 +274,7 @@ function mapFeaturedRepos() {
       description: repo.description || "",
       url: repo.url,
       liveUrl: repo.liveUrl || repo.url,
+      notice: repo.notice || "",
       language: repo.language || "",
       topics: Array.isArray(repo.topics) ? repo.topics : [],
       image: repo.image || ""
