@@ -50,6 +50,7 @@ const portfolio = {
         "Live at gamblr.pro as an MVP. Currently on free-tier hosting, so response times can be slower.",
       url: "https://github.com/klutzyk/Gamblr",
       liveUrl: "https://gamblr.pro",
+      titleUrl: "https://gamblr.pro",
       topics: [
         "Python",
         "FastAPI",
@@ -80,14 +81,22 @@ const portfolio = {
         "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1600&q=80"
     },
     {
-      name: "Data Insights Agent (WiP)",
+      name: "Circle of Lies (WiP)",
       description:
-        "A local, cost-free AI agent that analyzes a public dataset, answers natural-language questions, generates charts, and exports a report. Orchestrated with LangChain, with a CLI or lightweight Streamlit UI.",
-      url: "https://github.com/klutzyk/data-insights-agent",
-      liveUrl: "https://github.com/klutzyk/data-insights-agent",
-      topics: ["NLP", "Agents", "LLM", "Data Analysis"],
-      image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80"
+        "A web-based social strategy simulator where one human player faces five AI opponents in a multi-round trust game. Built with Next.js + FastAPI, it models deception, alliance formation, and uncertainty using agent-based AI and behavioral analytics.",
+      url: "https://github.com/klutzyk/Circle-of-Lies",
+      liveUrl: "https://github.com/klutzyk/Circle-of-Lies",
+      topics: [
+        "Game Theory",
+        "Social Strategy",
+        "Agent-Based AI",
+        "Behavioral Analytics",
+        "Next.js",
+        "FastAPI",
+        "TypeScript",
+        "Python"
+      ],
+      image: "assets/terminal.jpg"
     },
     {
       name: "RipOffRoo.live",
@@ -230,6 +239,7 @@ function renderSkillGroups() {
 function repoCardMarkup(repo, index) {
   const tags = deriveRepoTags(repo);
   const title = escapeHTML(repo.name || "Repository");
+  const titleUrl = escapeHTML(repo.titleUrl || repo.url || "#");
   const description = escapeHTML(summarizeRepo(repo));
   const notice = repo.notice ? escapeHTML(repo.notice) : "";
   const url = escapeHTML(repo.url || "#");
@@ -241,7 +251,7 @@ function repoCardMarkup(repo, index) {
     <article class="repo-card reveal-item" style="--delay:${index * 90}ms">
       <img class="repo-banner" src="${image}" alt="${title} preview" loading="lazy" />
       <div class="repo-content">
-        <h3><a href="${url}" target="_blank" rel="noreferrer">${title}</a></h3>
+        <h3><a href="${titleUrl}" target="_blank" rel="noreferrer">${title}</a></h3>
         <p>${description}</p>
         ${notice ? `<p class="repo-notice">${notice}</p>` : ""}
         <div class="repo-topics">
